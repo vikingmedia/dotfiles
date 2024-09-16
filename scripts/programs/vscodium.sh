@@ -1,5 +1,5 @@
 #!/bin/bash
 
 echo "🐟 Installing VSCodium"
-snap install codium --classic
+sudo snap install codium --classic
 
