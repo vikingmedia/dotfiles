@@ -21,18 +21,22 @@ function snap_install {
   which $1 &> /dev/null
 
   if [ $? -ne 0 ]; then
-    echo "APT-Installing: ${1}..."
-    sudo snap install -y $1
+    echo "SNAP-Installing: ${1}..."
+    sudo snap install $1
   else
     echo "Already installed: ${1}"
   fi
 }
 
+# Apply Gnome Settings
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'brave-browser.desktop', 'codium_codium.desktop']"
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
 # APT Install Basics
 apt_install build-essential
 apt_install file
 apt_install git
-apt_install net-tooles
+apt_install net-tools
 apt_install curl
 apt_install exfatprogs
 apt_install zsh
@@ -58,5 +62,3 @@ for f in programs/*.sh; do bash "$f" -H; done
 sudo apt upgrade -y
 sudo apt autoremove -y
 
-# Apply Gnome Settings
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'brave-browser.desktop', 'codium_codium.desktop']"
