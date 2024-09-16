@@ -34,7 +34,7 @@ apt_install file
 apt_install git
 apt_install net-tooles
 apt_install curl
-apt_install exfat-utils
+apt_install exfatprogs
 apt_install zsh
 apt_install joe
 apt_install htop
