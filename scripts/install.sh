@@ -34,6 +34,7 @@ gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 # APT Install Basics
 apt_install build-essential
+apt_install libfuse2
 apt_install file
 apt_install git
 apt_install net-tools
@@ -54,6 +55,7 @@ snap_install vlc
 snap_install joplin-desktop
 snap_install chromium 
 snap_install chromium-ffmpeg 
+snap_install freecad
 
 # Run all scripts in programs/
 for f in programs/*.sh; do bash "$f" -H; done
