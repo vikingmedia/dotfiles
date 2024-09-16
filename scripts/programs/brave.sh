@@ -8,6 +8,3 @@ sudo apt install brave-browser -y
 
 # set Brave Browser as default
 sudo update-alternatives --set x-www-browser /usr/bin/brave-browser-stable
-
-# run Brave Browser
-brave-browser
