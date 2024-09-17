@@ -28,9 +28,6 @@ function snap_install {
   fi
 }
 
-# Apply Gnome Settings
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'brave-browser.desktop', 'codium_codium.desktop']"
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 # APT Install Basics
 apt_install build-essential
@@ -63,4 +60,8 @@ for f in programs/*.sh; do bash "$f" -H; done
 # Get all upgrades
 sudo apt upgrade -y
 sudo apt autoremove -y
+
+# Apply Gnome Settings
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'brave-browser.desktop', 'eu.betterbird.Betterbird.desktop', 'joplin-desktop_joplin-desktop.desktop', 'codium_codium.desktop']"
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
