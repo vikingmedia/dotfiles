@@ -44,7 +44,7 @@ apt_install zsh
 apt_install joe
 apt_install htop
 apt_install wget
-apt_install gnome-tweak-tool
+apt_install gnome-tweaks
 apt_install backintime-qt 
 apt_install audacity
 apt_install calibre
