@@ -30,7 +30,10 @@ function snap_install {
 
 
 # APT Install Basics
+apt_install dbus-x11
 apt_install build-essential
+apt_install software-properties-common
+apt_install apt-transport-https curl
 apt_install libfuse2
 apt_install file
 apt_install git
@@ -46,13 +49,19 @@ apt_install backintime-qt
 apt_install audacity
 apt_install calibre
 apt_install flatpak
- 
+apt_install rhythmbox
+apt_install meld
+apt_install steam-installer
+apt_install steam-devices
+
+
 # SNAP Install Basics
 snap_install vlc
 snap_install joplin-desktop
 snap_install chromium 
 snap_install chromium-ffmpeg 
 snap_install freecad
+snap_install transmission
 
 # Run all scripts in programs/
 for f in programs/*.sh; do bash "$f" -H; done
