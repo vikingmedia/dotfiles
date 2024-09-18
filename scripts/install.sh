@@ -37,6 +37,7 @@ apt_install apt-transport-https curl
 apt_install libfuse2
 apt_install file
 apt_install git
+apt_install xz-utils
 apt_install net-tools
 apt_install curl
 apt_install exfatprogs
@@ -53,6 +54,12 @@ apt_install rhythmbox
 apt_install meld
 apt_install steam-installer
 apt_install steam-devices
+apt_install gparted
+# imagemagick and support libraries
+apt_install libpng-dev 
+apt_install libjpeg-dev
+apt_install libtiff-dev
+apt_install imagemagick
 
 
 # SNAP Install Basics
