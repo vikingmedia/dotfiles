@@ -55,6 +55,8 @@ apt_install meld
 apt_install steam-installer
 apt_install steam-devices
 apt_install gparted
+apt_install usb-creator-gtk
+apt_install ncdu
 # imagemagick and support libraries
 apt_install libpng-dev 
 apt_install libjpeg-dev
