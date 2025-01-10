@@ -57,6 +57,8 @@ apt_install steam-devices
 apt_install gparted
 apt_install usb-creator-gtk
 apt_install ncdu
+apt_install vice # for c1541 command line tool
+apt_install pkg-config
 # imagemagick and support libraries
 apt_install libpng-dev 
 apt_install libjpeg-dev
