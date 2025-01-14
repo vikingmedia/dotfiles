@@ -64,6 +64,7 @@ apt_install libpng-dev
 apt_install libjpeg-dev
 apt_install libtiff-dev
 apt_install imagemagick
+apt_install cmake
 
 
 # SNAP Install Basics
