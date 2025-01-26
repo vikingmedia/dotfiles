@@ -28,6 +28,17 @@ function snap_install {
   fi
 }
 
+function flatpak_install {
+  which $1 &> /dev/null
+
+  if [ $? -ne 0 ]; then
+    echo "FLATPAK-Installing: ${1}..."
+    sudo flatpak install flathub $1 -y
+  else
+    echo "Already installed: ${1}"
+  fi
+}
+
 
 # APT Install Basics
 apt_install dbus-x11
@@ -65,6 +76,7 @@ apt_install libjpeg-dev
 apt_install libtiff-dev
 apt_install imagemagick
 apt_install cmake
+apt_install minigalaxy # GOG Client
 
 
 # SNAP Install Basics
@@ -74,7 +86,10 @@ snap_install chromium
 snap_install chromium-ffmpeg 
 snap_install freecad
 snap_install transmission
-snap_install signal-desktop 
+snap_install signal-desktop
+
+# FLATPAK INSTALL
+flatpak_install org.prismlauncher.PrismLauncher
 
 # Run all scripts in programs/
 for f in programs/*.sh; do bash "$f" -H; done
