@@ -75,8 +75,11 @@ apt_install libpng-dev
 apt_install libjpeg-dev
 apt_install libtiff-dev
 apt_install imagemagick
+#
 apt_install cmake
-apt_install minigalaxy # GOG Client
+# apt_install minigalaxy # GOG Client
+apt_install sqlite3
+apt_install wipe
 
 
 # SNAP Install Basics
@@ -90,6 +93,7 @@ snap_install signal-desktop
 
 # FLATPAK INSTALL
 flatpak_install org.prismlauncher.PrismLauncher
+flatpak_install com.heroicgameslauncher.hgl
 
 # Run all scripts in programs/
 for f in programs/*.sh; do bash "$f" -H; done
