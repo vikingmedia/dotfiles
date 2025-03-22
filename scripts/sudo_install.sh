@@ -80,7 +80,8 @@ apt_install cmake
 # apt_install minigalaxy # GOG Client
 apt_install sqlite3
 apt_install wipe
-
+apt_install or
+sudo google-android-platform-tools-installer #adb
 
 # SNAP Install Basics
 snap_install vlc
