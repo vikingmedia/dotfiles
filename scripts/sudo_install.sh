@@ -76,6 +76,7 @@ apt_install libjpeg-dev
 apt_install libtiff-dev
 apt_install imagemagick
 apt_install jupyter
+apt_install handbreak
 #
 apt_install cmake
 # apt_install minigalaxy # GOG Client
