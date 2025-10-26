@@ -77,13 +77,16 @@ apt_install libtiff-dev
 apt_install imagemagick
 apt_install jupyter
 apt_install handbreak
-#
 apt_install cmake
 # apt_install minigalaxy # GOG Client
 apt_install sqlite3
 apt_install wipe
 apt_install or
 sudo google-android-platform-tools-installer #adb
+apt_install virtualbox 
+apt_sintall virtualbox-qt
+apt_install virtualbox-dkms 
+apt_install virtualbox-guest-additions-iso 
 
 # SNAP Install Basics
 snap_install vlc
