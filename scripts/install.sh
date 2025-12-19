@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# copy executables
+./install_executables.sh
+
+# run sudo_install
 sudo ./sudo_install.sh
 
 # Apply Gnome Settings

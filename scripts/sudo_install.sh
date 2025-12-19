@@ -87,6 +87,7 @@ apt_install virtualbox
 apt_sintall virtualbox-qt
 apt_install virtualbox-dkms 
 apt_install virtualbox-guest-additions-iso 
+apt_install mono-complete
 
 # SNAP Install Basics
 snap_install vlc
@@ -96,6 +97,7 @@ snap_install chromium-ffmpeg
 snap_install freecad
 snap_install transmission
 snap_install signal-desktop
+snap_install docker
 
 # FLATPAK INSTALL
 flatpak_install org.prismlauncher.PrismLauncher
