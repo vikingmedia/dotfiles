@@ -98,6 +98,7 @@ snap_install freecad
 snap_install transmission
 snap_install signal-desktop
 snap_install docker
+snap_install twinejs
 
 # FLATPAK INSTALL
 flatpak_install org.prismlauncher.PrismLauncher

@@ -1,0 +1,52 @@
+volumes:
+  mysql_data:
+  romm_resources:
+  romm_redis_data:
+
+services:
+  romm:
+    image: rommapp/romm:latest
+    container_name: romm
+    restart: unless-stopped
+    environment:
+      - DB_HOST=romm-db
+      - DB_NAME=romm # Should match MARIADB_DATABASE in mariadb
+      - DB_USER=romm-user # Should match MARIADB_USER in mariadb
+      - DB_PASSWD=K925H2nME2ZoarVT # Should match MARIADB_PASSWORD in mariadb
+      - ROMM_AUTH_SECRET_KEY=0ca1b68eb972c9bc552d03bbea15d2233c521ec44ff3969c8b10d57efdcde284 # Generate a key with `openssl rand -hex 32`
+      - SCREENSCRAPER_USER=raumriss # These are the recommended metadata providers
+      - SCREENSCRAPER_PASSWORD=9nQOfOzEo8DySTfN # https://docs.romm.app/latest/Getting-Started/Metadata-Providers/#screenscraper
+      - RETROACHIEVEMENTS_API_KEY=fN9VWjEe3KOqo5Ym9Q1FOaYjeaj9qm7k # https://docs.romm.app/latest/Getting-Started/Metadata-Providers/#retroachievements
+      - STEAMGRIDDB_API_KEY=0c4899b1515a0e624c7741b9d7cec9de # https://docs.romm.app/latest/Getting-Started/Metadata-Providers/#steamgriddb
+      - HASHEOUS_API_ENABLED=true # https://docs.romm.app/latest/Getting-Started/Metadata-Providers/#hasheous
+    volumes:
+      - romm_resources:/romm/resources # Resources fetched from IGDB (covers, screenshots, etc.)
+      - romm_redis_data:/redis-data # Cached data for background tasks
+      - /home/zking/Documents/RommApp/Library:/romm/library # Your game library. Check https://docs.romm.app/latest/Getting-Started/Folder-Structure/ for more details.
+      - /home/zking/Documents/RommApp/Assets:/romm/assets # Uploaded saves, states, etc.
+      - /home/zking/Documents/RommApp/Config:/romm/config # (Optional) Path where config.yml is stored
+    ports:
+      - 80:8080
+    depends_on:
+      romm-db:
+        condition: service_healthy
+        restart: true
+
+  romm-db:
+    image: mariadb:latest
+    container_name: romm-db
+    restart: unless-stopped
+    environment:
+      - MARIADB_ROOT_PASSWORD=c3sXYFfUA9gLbWNJ
+      - MARIADB_DATABASE=romm
+      - MARIADB_USER=romm-user
+      - MARIADB_PASSWORD=K925H2nME2ZoarVT
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 30s
+      start_interval: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 5
