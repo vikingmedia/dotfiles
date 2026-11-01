@@ -161,6 +161,38 @@ else
     --noautoconsole
 fi
 
+# --- Desktop shortcut -------------------------------------------------------
+if sudo virsh -c "$LIBVIRT_URI" dominfo "$VM_NAME" &>/dev/null; then
+  apps_dir="/home/${VM_USER}/.local/share/applications"
+  icon="/home/${VM_USER}/.local/share/icons/${VM_NAME}.svg"
+  mkdir -p "$apps_dir" "$(dirname "$icon")"
+  cat > "$icon" <<'EOF'
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#28AFEA"/>
+      <stop offset="1" stop-color="#0063B1"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="42" height="42" fill="url(#g)"/>
+  <rect x="46" y="0" width="42" height="42" fill="url(#g)"/>
+  <rect x="0" y="46" width="42" height="42" fill="url(#g)"/>
+  <rect x="46" y="46" width="42" height="42" fill="url(#g)"/>
+</svg>
+EOF
+  cat > "${apps_dir}/${VM_NAME}.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Windows 11 (${VM_NAME})
+Comment=Start the ${VM_NAME} VM and open its display
+Exec=sh -c "virsh -c ${LIBVIRT_URI} start ${VM_NAME} 2>/dev/null; exec virt-viewer -c ${LIBVIRT_URI} --attach --wait ${VM_NAME}"
+Icon=${icon}
+Terminal=false
+Categories=System;Emulator;
+EOF
+  echo "🔗 Shortcut created: ${apps_dir}/${VM_NAME}.desktop"
+fi
+
 echo
 echo "✅ Done."
 if $added_group; then
